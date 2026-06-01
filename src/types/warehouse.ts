@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   name_uz?: string;
   category: string;
@@ -19,7 +19,7 @@ export interface Product {
 }
 
 export interface AIInsight {
-  id: number;
+  id: string;
   type: 'warning' | 'opportunity' | 'efficiency' | 'critical';
   title: string;
   description: string;

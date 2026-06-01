@@ -3,7 +3,7 @@ import type { CartItem } from "../types";
 
 // Using a simple store pattern with React hooks
 let cartItems: CartItem[] = [];
-let favoriteIds: number[] = [];
+let favoriteIds: string[] = [];
 let listeners: (() => void)[] = [];
 
 const notifyListeners = () => {
@@ -38,12 +38,12 @@ export const useCartStore = () => {
     notifyListeners();
   }, []);
 
-  const removeFromCart = useCallback((id: number) => {
+  const removeFromCart = useCallback((id: string) => {
     cartItems = cartItems.filter((item) => item.id !== id);
     notifyListeners();
   }, []);
 
-  const toggleFavorite = useCallback((id: number) => {
+  const toggleFavorite = useCallback((id: string) => {
     if (favoriteIds.includes(id)) {
       favoriteIds = favoriteIds.filter((fid) => fid !== id);
     } else {
@@ -52,11 +52,11 @@ export const useCartStore = () => {
     notifyListeners();
   }, []);
 
-  const isInCart = useCallback((id: number) => {
+  const isInCart = useCallback((id: string) => {
     return cartItems.some((item) => item.id === id);
   }, []);
 
-  const isFavorite = useCallback((id: number) => {
+  const isFavorite = useCallback((id: string) => {
     return favoriteIds.includes(id);
   }, []);
 
