@@ -1,18 +1,25 @@
 export interface Product {
-  id: string;
+  id: number;
   name: string;
+  name_uz?: string;
   category: string;
   price: number;
+  discount?: number;
   stock: number;
   minStock: number;
   maxStock: number;
   status: 'healthy' | 'critical' | 'overstock' | 'dead';
   lastRestocked: string;
   dailySales: number;
+  images?: Array<{
+    source: string;
+    status?: string;
+  }>;
+  rating?: number;
 }
 
 export interface AIInsight {
-  id: string;
+  id: number;
   type: 'warning' | 'opportunity' | 'efficiency' | 'critical';
   title: string;
   description: string;

@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { id, name_uz, price, discount, rating = 4, images } = product;
+  const { id, name_uz = '', price, discount = 0, rating = 4, images = [] } = product;
   const mainImageUrl = images.find((item: any) => item.status === 'M')?.source || '';
   
   const { addToCart, removeFromCart, toggleFavorite, isInCart, isFavorite } = useCartStore();
@@ -22,7 +22,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   
   const discountedPrice = calculateDiscountedPrice(price, discount);
   const cartItem = {
-    id: parseInt(id),
+    id: id,
     name: name_uz,
     price: discountedPrice,
     quantity: 1,

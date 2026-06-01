@@ -48,7 +48,7 @@ export const WarehouseDashboard = () => {
   };
 
   const handleAddProduct = (newProduct: Product) => setProducts([...products, newProduct]);
-  const handleDeleteProduct = (id: string) => setProducts(products.filter(p => p.id !== id));
+  const handleDeleteProduct = (id: string | number) => setProducts(products.filter(p => p.id !== (id)));
   const handleAction = (insight: AIInsight) => alert(`Amal bajarildi: ${insight.actionLabel} -> ${insight.title}`);
 
   const stockData = products.map(p => ({ name: p.name.split(' ')[0], stock: p.stock, min: p.minStock, max: p.maxStock }));
